@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './App.css'; // Assuming you have some basic global styles
 
-function App() {
+function ThemeToggler() {
+  // Initialize the state with 'light' as the default theme
+  const [theme, setTheme] = useState('light');
+
+  // Function to toggle the theme
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`app-container ${theme}`}>
+      <h1>Theme Toggler</h1>
+      <p>This is a simple React app to toggle between dark and light themes.</p>
+      <button onClick={toggleTheme}>
+        {theme === 'light' ? 'Switch to Dark Theme' : 'Switch to Light Theme'}
+      </button>
     </div>
   );
 }
 
-export default App;
+export default ThemeToggler;
